@@ -1,0 +1,23 @@
+{
+  "name": "Polymer-PWA",
+  "authors": [
+    "Yash Thakkar <nerdyash@yahoo.com>"
+  ],
+  "description": "polymer test",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^3.0.2",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "platform": "polymer-platform#^0.4.2"
+  }
+}

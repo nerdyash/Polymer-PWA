@@ -1,7 +1,76 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="hello-world" noscript>
+<dom-module id="hello-world">
     <template>
-        <h1>Hello World!!!</h1>
+        <style>
+            h1 {
+                font-family: 'Times New Roman', Times, serif;
+                text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+
+            }
+        </style>
+        <!-- <div> Names: </div> -->
+        <!-- loop in polymer -->
+        <!-- <template is = "dom-repeat" items = "{{names}}">
+            <div>{{item.name}}</div>
+        </template> -->
+
+        <!-- Two way data binding -->
+        <h1> Hello {{name}}</h1>
+        <input type="text" value="{{name::input}}" >
+        <button on-click="changeName">Change Name</button>
     </template>
-</polymer-element>
+
+    <script>
+        // Polymer 1.0
+        // element registration
+        Polymer({
+            is: "hello-world",
+
+            // for binding only one property
+            // properties: {
+            //     name: {
+            //         type: String,
+            //         value: "Yash!"
+            //     }
+            // }
+
+            // for binding same property multiple time (loop / repeat)
+            // ready: function() {
+            //     this.names = [
+            //         {name : 'Yash'},
+            //         {name : 'Dhruv'}
+            //     ];
+            // }
+
+            // For two way data binding
+            ready: function() {
+                this.name = "Yash"
+            },
+            changeName: function() {
+                this.name = "Dhruv"
+            }
+        });
+        
+        // Polymer 2.0
+        // class helloWorld extends Polymer.Element {
+        //     static get is() {return 'hello-world';}
+                // create array in 2.0
+                // static get properties() {
+                //     return {
+                //         names: {
+                //             type: Array, 
+                //             value() {
+                //                 return [
+                //                     {name: 'Yash'},
+                //                     {name: 'Dhruv'}
+                //                 ]
+                //             }
+                //         }
+                //     }
+                // }
+        // }
+        // customElements.define(helloWorld.is, helloWorld);
+    </script>
+
+</dom-module>
