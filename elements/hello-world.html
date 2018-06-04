@@ -1,12 +1,39 @@
+<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<!-- import for flex layout -->
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-elements/paper-elements.html">
 
 <dom-module id="hello-world">
     <template>
+        <!-- this style tag is for flex layout -->
+        <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+
         <style>
             h1 {
                 font-family: 'Times New Roman', Times, serif;
                 text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-
+            }
+            paper-toolbar {
+                background: #333;
+                color: #fff;
+            }
+            paper-toolbar div{
+                text-align: center;
+            }
+            .flex_ex {
+                background: #333;
+                padding: 10px;
+            }
+            .flex_ex > div {
+                background: #eee;
+                color: #333;
+                margin: 10px;
             }
         </style>
         <!-- <div> Names: </div> -->
@@ -14,11 +41,42 @@
         <!-- <template is = "dom-repeat" items = "{{names}}">
             <div>{{item.name}}</div>
         </template> -->
+        
+        <!-- Polymer header panel -->
 
-        <!-- Two way data binding -->
-        <h1> Hello {{name}}</h1>
-        <input type="text" value="{{name::input}}" >
-        <button on-click="changeName">Change Name</button>
+        <body class="fullbleed layout vertical">
+            <paper-header-panel class="flex">
+                <paper-toolbar slot="header">
+                    <div>Hey there!</div>
+                    <p class="fit">Have a nice day today!</p>
+                </paper-toolbar>
+            </paper-header-panel>
+            <iron-icon icon="face"></iron-icon>
+            <iron-icon icon="social:person-add"></iron-icon>
+            <!-- Two way data binding -->
+            <h1 id="test"> Hello {{name}}</h1>
+            <paper-tooltip for="test" animation-delay="0" position="down">You are the best.</paper-tooltip>
+            <input type="text" value="{{name::input}}">
+            <!-- don't put curly brackets around onclick event -->
+            <button on-click="changeName">Change Name</button>
+
+            <!-- flex layout -->
+            <div class="flex_ex layout horizontal">
+                <div class="flex">One</div>
+                <div class="flex">Two</div>
+                <div class="flex">Three</div>
+            </div>
+
+            <!-- paper elements -->
+            <paper-checkbox></paper-checkbox>
+            <paper-input always-float-label label="Floatinf label"></paper-input>
+            <paper-tabs selected="0">
+                <paper-tab>First</paper-tab>
+                <paper-tab>Second</paper-tab>
+                <paper-tab>Third</paper-tab>
+            </paper-tabs>
+        
+        </body>
     </template>
 
     <script>
